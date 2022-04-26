@@ -1,0 +1,5 @@
+FROM python:3.10.4-slim-bullseye
+
+COPY hello-sleep.py .
+
+CMD ["python", "hello-sleep.py"]

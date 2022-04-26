@@ -1,0 +1,29 @@
+# Use full image for build
+FROM python:3.10.4-bullseye as build
+
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+WORKDIR /app
+
+# Install dependencies:
+COPY requirements.txt .
+RUN pip install --no-binary :all: -r requirements.txt
+
+####################################################
+
+# Use slim image for deployment
+FROM python:3.10.4-slim-bullseye
+
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+RUN adduser app
+USER app
+
+# Our application
+COPY --from=build /opt/venv /opt/venv
+
+COPY myapp.py .
+CMD ["python", "myapp.py"]
