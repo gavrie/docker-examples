@@ -14,7 +14,5 @@ RUN adduser app
 USER app
 
 # Our application
-
 COPY myapp.py .
-
 CMD ["python", "myapp.py"]

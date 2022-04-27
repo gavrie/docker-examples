@@ -10,3 +10,7 @@ With deps:
 - slim-bullseye-compile - failure due to missing buildpack-deps
 - bullseye-compile - build from source works but huge image
 - multistage - FTW
+
+To build a Docker image from one of the Dockerfiles, specify its path:
+
+    docker build -t hellopy -f more_pip/Dockerfile.multistage .
