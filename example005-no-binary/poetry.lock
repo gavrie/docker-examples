@@ -1,0 +1,15 @@
+[[package]]
+name = "ujson"
+version = "5.6.0"
+description = "Ultra fast JSON encoder and decoder for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "19d711630aacf4f5d1bbdbcca09edddea5d6cdf7e05e0ae60fab6d7fcf9eaf10"
+
+[metadata.files]
+ujson = []
