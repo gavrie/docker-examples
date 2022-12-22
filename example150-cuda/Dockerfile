@@ -21,11 +21,14 @@ COPY . .
 ENV CUDA_HOME /usr/local/cuda
 ENV PATH $CUDA_HOME/bin:$PATH
 
-RUN ./build
+RUN mkdir build \
+        && cd build \
+        && cmake .. \
+        && cmake --build .
 
 ###################
 
-FROM nvidia/cuda:11.2.0-runtime-ubuntu20.04 as runtime
+FROM nvidia/cuda:11.2.0-base-ubuntu20.04 as runtime
 
 RUN set -eux; \
         apt-get update; \
@@ -40,10 +43,10 @@ RUN set -eux; \
 
 RUN useradd ubuntu -d /home/ubuntu -u 1000 -m
 
-COPY --from=builder /src/Release/myapp /usr/local/bin
+COPY --from=builder /src/build/hello /usr/local/bin
 
 USER ubuntu
 
 WORKDIR /home/ubuntu
 
-CMD ["myapp"]
+CMD ["hello"]

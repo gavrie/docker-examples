@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 # Create user and switch to it
 RUN useradd --create-home appuser

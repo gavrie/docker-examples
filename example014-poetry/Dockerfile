@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 # Install poetry globally
 RUN pip install poetry==1.3.1

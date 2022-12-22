@@ -1,5 +1,5 @@
 # Use full image for build
-FROM python:3.10.4-bullseye as build
+FROM python:3.10-bullseye as build
 
 # Install poetry globally
 RUN pip install poetry==1.3.1
@@ -17,7 +17,7 @@ RUN poetry install
 ####################################################
 
 # Use slim image for deployment
-FROM python:3.10.4-slim-bullseye
+FROM python:3.10-slim-bullseye
 
 # Create user and switch to it
 RUN useradd --create-home appuser
