@@ -1,4 +1,5 @@
 import ujson
 
-d = dict(hello="ultima")
-print(ujson.dumps(d))
+if __name__ == '__main__':
+    d = dict(hello="ultima")
+    print(ujson.dumps(d))
